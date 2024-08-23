@@ -59,6 +59,10 @@ public class Matrix {
         return new Matrix(newMatrixElements);
     }
 
+    public void setValue(int row, int col, float val) {
+        this.matrixElements[row][col] = val;
+    }
+
     // private methods
 
     private void calculateDet() {
