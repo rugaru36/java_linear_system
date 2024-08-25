@@ -43,7 +43,7 @@ public class LinearSystem {
 
     public void solve(ISolutionAlgorithm algorithm) {
         String algorithmName = algorithm.getName();
-        Float[] solutions = algorithm.provideSystem(this).solve();
+        Float[] solutions = algorithm.setSystem(this).getSolution();
         SolutionSet solutionSet = new SolutionSet(algorithmName, solutions);
         this.solutionSets.add(solutionSet);
     }

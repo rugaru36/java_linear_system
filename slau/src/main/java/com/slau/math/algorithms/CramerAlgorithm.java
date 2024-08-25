@@ -14,13 +14,13 @@ public class CramerAlgorithm implements ISolutionAlgorithm {
     }
 
     @Override
-    public ISolutionAlgorithm provideSystem(LinearSystem system) {
+    public ISolutionAlgorithm setSystem(LinearSystem system) {
         this.system = system;
         return this;
     }
 
     @Override
-    public Float[] solve() {
+    public Float[] getSolution() {
         try {
             if (this.system == null) {
                 throw new Exception("system is not provided");
