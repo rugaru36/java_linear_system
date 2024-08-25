@@ -1,6 +1,6 @@
 package com.slau.math.algorithms;
 
-import com.slau.math.LinearSystem;
+import com.slau.math.datasets.LinearSystem;
 import com.slau.math.datasets.NumMatrix;
 import com.slau.math.datasets.NumVector;
 

@@ -1,10 +1,8 @@
-package com.slau.math;
+package com.slau.math.datasets;
 
 import java.util.ArrayList;
 
 import com.slau.math.algorithms.ISolutionAlgorithm;
-import com.slau.math.datasets.NumMatrix;
-import com.slau.math.datasets.NumVector;
 
 class SolutionSet {
     public String name;

@@ -1,7 +1,7 @@
-package com.slau;
+package com.slau.math;
 
-import com.slau.math.LinearSystem;
 import com.slau.math.algorithms.ISolutionAlgorithm;
+import com.slau.math.datasets.LinearSystem;
 
 public class SolutionThread extends Thread {
     private final LinearSystem lSystem;
