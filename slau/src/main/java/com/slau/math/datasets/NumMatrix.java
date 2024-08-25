@@ -13,31 +13,7 @@ public class NumMatrix {
     private Float[][] matrixElements;
     private Float determinant = null;
 
-    public boolean equals(NumMatrix m) {
-        if (m == null || this.colsNum != m.colsNum || this.rowsNum != m.rowsNum) {
-            return false;
-        }
-        for (int i = 0; i < this.rowsNum; i++) {
-            for (int j = 0; j < this.colsNum; j++) {
-                if (!Objects.equals(this.matrixElements[i][j], m.matrixElements[i][j])) {
-                    return false;
-                }
-            }
-        }
-        return true;
-    }
-
-    public Float getDeterminant() {
-        if (this.determinant == null) {
-            try {
-                this.calculateDet();
-            } catch (Exception e) {
-                System.err.println(e.getMessage());
-                return null;
-            }
-        }
-        return this.determinant;
-    }
+    // constructors
 
     public NumMatrix(int size) {
         try {
@@ -63,6 +39,42 @@ public class NumMatrix {
         this.rowsNum = matrixElements.length;
         this.colsNum = matrixElements[0].length;
         this.matrixElements = matrixElements;
+    }
+
+    // equals override
+    public boolean equals(NumMatrix m) {
+        if (m == null || this.colsNum != m.colsNum || this.rowsNum != m.rowsNum) {
+            return false;
+        }
+        for (int i = 0; i < this.rowsNum; i++) {
+            for (int j = 0; j < this.colsNum; j++) {
+                if (!Objects.equals(this.matrixElements[i][j], m.matrixElements[i][j])) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    // public methods
+
+    public Float getValue(int row, Integer col) {
+        if (col == null) {
+            col = row;
+        }
+        return this.matrixElements[row][col];
+    }
+
+    public Float getDeterminant() {
+        if (this.determinant == null) {
+            try {
+                this.calculateDet();
+            } catch (Exception e) {
+                System.err.println(e.getMessage());
+                return null;
+            }
+        }
+        return this.determinant;
     }
 
     public NumMatrix getClonedMatrix() {
