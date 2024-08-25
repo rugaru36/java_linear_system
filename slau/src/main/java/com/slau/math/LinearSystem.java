@@ -3,8 +3,8 @@ package com.slau.math;
 import java.util.ArrayList;
 
 import com.slau.math.algorithms.ISolutionAlgorithm;
-import com.slau.math.datasets.Matrix;
-import com.slau.math.datasets.Vector;
+import com.slau.math.datasets.NumMatrix;
+import com.slau.math.datasets.NumVector;
 
 class SolutionSet {
     public String name;
@@ -32,14 +32,14 @@ class SolutionSet {
 
 
 public class LinearSystem {
-    public Matrix coeffMatrix = null;
-    public Vector addtionalVector = null;
+    public NumMatrix coeffMatrix = null;
+    public NumVector addtionalVector = null;
     public int size;
     private final ArrayList<SolutionSet> solutionSets = new ArrayList<>();
 
     public LinearSystem(int systemSize) {
-        this.coeffMatrix = new Matrix(systemSize);
-        this.addtionalVector = new Vector(systemSize);
+        this.coeffMatrix = new NumMatrix(systemSize);
+        this.addtionalVector = new NumVector(systemSize);
         this.size = systemSize;
     }
 

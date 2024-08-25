@@ -1,16 +1,16 @@
 package com.slau.math.algorithms;
 
 import com.slau.math.LinearSystem;
-import com.slau.math.datasets.Matrix;
-import com.slau.math.datasets.Vector;
+import com.slau.math.datasets.NumMatrix;
+import com.slau.math.datasets.NumVector;
 
 public class CramerAlgorithm implements ISolutionAlgorithm {
 
     private LinearSystem system;
     private final String name;
 
-    public CramerAlgorithm(String name) {
-        this.name = name;
+    public CramerAlgorithm() {
+        this.name = "Cramer";
     }
 
     @Override
@@ -34,7 +34,7 @@ public class CramerAlgorithm implements ISolutionAlgorithm {
             for (int i = 0; i < this.system.size; i++) {
                 solutions[i] = this.getOneSolutionByIndex(i);
             }
-            return  solutions;
+            return solutions;
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }
@@ -47,13 +47,13 @@ public class CramerAlgorithm implements ISolutionAlgorithm {
     }
 
     private Float getOneSolutionByIndex(int index) {
-        Matrix matrixWithReplacedCol =
+        NumMatrix matrixWithReplacedCol =
                 this.getCoeffMatrixWithReplacedCol(index, this.system.addtionalVector);
         return matrixWithReplacedCol.getDeterminant() / this.system.coeffMatrix.getDeterminant();
     }
 
-    private Matrix getCoeffMatrixWithReplacedCol(int colNum, Vector vectorToReplace) {
-        Matrix clonedMatrix = this.system.coeffMatrix.getClonedMatrix();
+    private NumMatrix getCoeffMatrixWithReplacedCol(int colNum, NumVector vectorToReplace) {
+        NumMatrix clonedMatrix = this.system.coeffMatrix.getClonedMatrix();
         for (int i = 0; i < system.size; i++) {
             clonedMatrix.setValue(i, colNum, vectorToReplace.getValue(i));
         }

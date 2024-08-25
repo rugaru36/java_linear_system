@@ -1,13 +1,20 @@
 package com.slau;
 
-import com.slau.math.datasets.Matrix;
+import com.slau.math.LinearSystem;
+import com.slau.math.algorithms.CramerAlgorithm;
 
 public class Main {
     public static void main(String[] args) {
         try {
-            Matrix matrix = new Matrix(4);
-            float det = matrix.getDeterminant();
-            System.out.println(det);
+            LinearSystem lSystem = new LinearSystem(3);
+            SolutionThread stCramer = new SolutionThread(lSystem, new CramerAlgorithm());
+            stCramer.start();
+            try {
+                stCramer.join();
+            } catch (InterruptedException e) {
+                System.err.println(e.getMessage());
+            }
+            lSystem.printAllSolutions();
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }

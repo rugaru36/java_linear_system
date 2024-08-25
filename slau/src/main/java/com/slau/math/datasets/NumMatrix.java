@@ -5,7 +5,7 @@ import java.util.Objects;
 import com.slau.shared.input.FloatInputHandler;
 import com.slau.shared.input.IInputHandler;
 
-public class Matrix {
+public class NumMatrix {
     private final IInputHandler<Float> fInput = new FloatInputHandler();
 
     private int rowsNum;
@@ -13,7 +13,7 @@ public class Matrix {
     private Float[][] matrixElements;
     private Float determinant = null;
 
-    public boolean equals(Matrix m) {
+    public boolean equals(NumMatrix m) {
         if (m == null || this.colsNum != m.colsNum || this.rowsNum != m.rowsNum) {
             return false;
         }
@@ -39,7 +39,7 @@ public class Matrix {
         return this.determinant;
     }
 
-    public Matrix(int size) {
+    public NumMatrix(int size) {
         try {
             this.rowsNum = size;
             this.colsNum = size;
@@ -49,7 +49,7 @@ public class Matrix {
         }
     }
 
-    public Matrix(int rows, int cols) {
+    public NumMatrix(int rows, int cols) {
         try {
             this.rowsNum = rows;
             this.colsNum = cols;
@@ -59,20 +59,20 @@ public class Matrix {
         }
     }
 
-    public Matrix(Float[][] matrixElements) {
+    public NumMatrix(Float[][] matrixElements) {
         this.rowsNum = matrixElements.length;
         this.colsNum = matrixElements[0].length;
         this.matrixElements = matrixElements;
     }
 
-    public Matrix getClonedMatrix() {
+    public NumMatrix getClonedMatrix() {
         Float[][] newMatrixElements = new Float[this.rowsNum][this.colsNum];
         for (int i = 0; i < this.rowsNum; i++) {
             for (int j = 0; j < this.colsNum; j++) {
                 newMatrixElements[i] = this.matrixElements[i].clone();
             }
         }
-        return new Matrix(newMatrixElements);
+        return new NumMatrix(newMatrixElements);
     }
 
     public void setValue(int row, int col, float val) {
@@ -95,7 +95,7 @@ public class Matrix {
         final int row = 0;
 
         for (int i = 0; i < this.rowsNum; i++) {
-            Matrix minor = this.getElementMinor(row, i);
+            NumMatrix minor = this.getElementMinor(row, i);
             int sign = (int) Math.pow(-1, i);
             double matrixElement = this.matrixElements[row][i];
             detAccumulator += sign * matrixElement * minor.getDeterminant();
@@ -103,7 +103,7 @@ public class Matrix {
         this.determinant = detAccumulator;
     }
 
-    private Matrix getElementMinor(int elRow, int elCol) {
+    private NumMatrix getElementMinor(int elRow, int elCol) {
         try {
             int size = this.colsNum;
             int minorSize = size - 1;
@@ -126,7 +126,7 @@ public class Matrix {
                 newMatrixElements[minorCurrRowNum] = minorRow;
                 minorCurrRowNum++;
             }
-            return new Matrix(newMatrixElements);
+            return new NumMatrix(newMatrixElements);
         } catch (Exception e) {
             System.err.println(e.getMessage());
             return null;
