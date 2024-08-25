@@ -1,5 +1,7 @@
 package com.slau.math.datasets;
 
+import java.util.Objects;
+
 import com.slau.shared.input.FloatInputHandler;
 import com.slau.shared.input.IInputHandler;
 
@@ -10,6 +12,20 @@ public class Matrix {
     private int colsNum;
     private Float[][] matrixElements;
     private Float determinant = null;
+
+    public boolean equals(Matrix m) {
+        if (m == null || this.colsNum != m.colsNum || this.rowsNum != m.rowsNum) {
+            return false;
+        }
+        for (int i = 0; i < this.rowsNum; i++) {
+            for (int j = 0; j < this.colsNum; j++) {
+                if (!Objects.equals(this.matrixElements[i][j], m.matrixElements[i][j])) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
 
     public Float getDeterminant() {
         if (this.determinant == null) {
