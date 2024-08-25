@@ -7,7 +7,7 @@ public class SolutionThread extends Thread {
     private final LinearSystem lSystem;
     private final ISolutionAlgorithm algorithm;
 
-    SolutionThread(LinearSystem lSystem, ISolutionAlgorithm algorithm) {
+    public SolutionThread(LinearSystem lSystem, ISolutionAlgorithm algorithm) {
         this.lSystem = lSystem;
         this.algorithm = algorithm;
         this.algorithm.provideSystem(this.lSystem);
