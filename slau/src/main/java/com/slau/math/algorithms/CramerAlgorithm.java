@@ -5,18 +5,11 @@ import com.slau.math.datasets.NumMatrix;
 import com.slau.math.datasets.NumVector;
 
 public class CramerAlgorithm implements ISolutionAlgorithm {
-
     private LinearSystem system;
-    private final String name;
-
-    public CramerAlgorithm() {
-        this.name = "Cramer";
-    }
 
     @Override
-    public ISolutionAlgorithm setSystem(LinearSystem system) {
+    public void setSystem(LinearSystem system) {
         this.system = system;
-        return this;
     }
 
     @Override
@@ -43,7 +36,7 @@ public class CramerAlgorithm implements ISolutionAlgorithm {
 
     @Override
     public String getName() {
-        return name;
+        return "Cramer";
     }
 
     private Float getOneSolutionByIndex(int index) {
@@ -55,7 +48,7 @@ public class CramerAlgorithm implements ISolutionAlgorithm {
     private NumMatrix getCoeffMatrixWithReplacedCol(int colNum, NumVector vectorToReplace) {
         NumMatrix clonedMatrix = this.system.coeffMatrix.getClonedMatrix();
         for (int i = 0; i < system.size; i++) {
-            clonedMatrix.setValue(i, colNum, vectorToReplace.getValue(i));
+            clonedMatrix.set(i, colNum, vectorToReplace.get(i));
         }
         return clonedMatrix;
     }

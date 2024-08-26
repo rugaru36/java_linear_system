@@ -58,10 +58,17 @@ public class NumMatrix {
 
     // public methods
 
-    public Float getValue(int row, Integer col) {
-        if (col == null) {
-            col = row;
+    public void print() {
+        for (int i = 0; i < this.rowsNum; i++) {
+            String row = "";
+            for (int j = 0; j < this.colsNum; j++) {
+                row += this.get(i, j) + ", ";
+            }
+            System.out.println(row);
         }
+    }
+
+    public Float get(int row, int col) {
         return this.matrixElements[row][col];
     }
 
@@ -87,7 +94,7 @@ public class NumMatrix {
         return new NumMatrix(newMatrixElements);
     }
 
-    public void setValue(int row, int col, float val) {
+    public void set(int row, int col, float val) {
         this.matrixElements[row][col] = val;
     }
 

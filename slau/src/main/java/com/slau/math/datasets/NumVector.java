@@ -21,6 +21,7 @@ public class NumVector {
     public NumVector(int size) {
         try {
             this.elements = this.fInput.getArray(size, null, null);
+            this.size = size;
         } catch (Exception e) {
             System.err.println(e.getMessage());
             this.elements = null;
@@ -28,14 +29,27 @@ public class NumVector {
     }
 
     public int getSize() {
-        return size;
+        return this.size;
     }
 
-    public void setValue(int index, float val) {
+    public void set(int index, float val) {
         this.elements[index] = val;
     }
 
-    public Float getValue(int index) {
+    public Float get(int index) {
         return this.elements[index];
+    }
+
+    public Float[] get() {
+        return this.elements;
+    }
+
+    public NumVector getClonedVector() {
+        Float[] newElements = new Float[this.size];
+        for (int i = 0; i < this.size; i++) {
+            float newRawVal = this.get(i);
+            newElements[i] = newRawVal;
+        }
+        return new NumVector(newElements);
     }
 }
