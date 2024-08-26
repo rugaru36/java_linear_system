@@ -56,18 +56,6 @@ public class NumMatrix {
         return true;
     }
 
-    // public methods
-
-    public void print() {
-        for (int i = 0; i < this.rowsNum; i++) {
-            String row = "";
-            for (int j = 0; j < this.colsNum; j++) {
-                row += this.get(i, j) + ", ";
-            }
-            System.out.println(row);
-        }
-    }
-
     public Float get(int row, int col) {
         return this.matrixElements[row][col];
     }
