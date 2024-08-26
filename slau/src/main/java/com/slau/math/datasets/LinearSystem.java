@@ -24,7 +24,7 @@ class SolutionSet {
             singleSolutionPresentations[i] = "X[" + (i + 1) + "] = " + this.solutions[i];
         }
         String allSolutionsPresentation = String.join(", ", singleSolutionPresentations);
-        System.out.println(namePresentation + ": " + allSolutionsPresentation + "\n");
+        System.out.println(namePresentation + ": " + allSolutionsPresentation);
     }
 }
 
