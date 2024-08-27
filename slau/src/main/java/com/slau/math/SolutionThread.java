@@ -4,6 +4,7 @@ import com.slau.math.algorithms.ISolutionAlgorithm;
 import com.slau.math.datasets.LinearSystem;
 
 public class SolutionThread extends Thread {
+
     private final LinearSystem lSystem;
     private final ISolutionAlgorithm algorithm;
 
@@ -12,10 +13,10 @@ public class SolutionThread extends Thread {
         this.algorithm = algorithm;
         this.setName(algorithm.getName() + "_thread");
     }
-    
+
     @Override
     public void run() {
-        synchronized(this.lSystem) {
+        synchronized (this.lSystem) {
             this.lSystem.solve(this.algorithm);
         }
     }

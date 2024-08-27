@@ -4,6 +4,7 @@ import com.slau.shared.input.FloatInputHandler;
 import com.slau.shared.input.IInputHandler;
 
 public class NumVector implements Cloneable {
+
     /**
      * vector elements
      */
@@ -11,7 +12,6 @@ public class NumVector implements Cloneable {
     private int size;
 
     private final IInputHandler<Float> fInput = new FloatInputHandler();
-
 
     public NumVector(Float[] elements) {
         this.elements = elements;

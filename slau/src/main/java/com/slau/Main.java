@@ -10,17 +10,17 @@ public class Main {
     public static void main(String[] args) {
         try {
             LinearSystem lSystem = new LinearSystem(3);
-            
+
             SolutionThread cramerT = new SolutionThread(
                     lSystem,
                     new CramerAlgorithm());
             SolutionThread jordanGaussT = new SolutionThread(
-                    lSystem, 
+                    lSystem,
                     new JordanGaussAlgorithm());
             SolutionThread[] threads = new SolutionThread[]{
-                cramerT, 
+                cramerT,
                 jordanGaussT};
-            
+
             try {
                 for (SolutionThread thread : threads) {
                     thread.start();

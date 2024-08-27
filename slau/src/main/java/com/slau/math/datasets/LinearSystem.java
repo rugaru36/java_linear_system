@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import com.slau.math.algorithms.ISolutionAlgorithm;
 
 class SolutionSet {
+
     public String name;
     public Float[] solutions;
 
@@ -19,7 +20,7 @@ class SolutionSet {
         }
         int solutionsCount = this.solutions.length;
         String nameStr = "Algorithm name: " + this.name;
-        String[] singleSolutionStr  = new String[this.solutions.length];
+        String[] singleSolutionStr = new String[this.solutions.length];
         for (int i = 0; i < solutionsCount; i++) {
             singleSolutionStr[i] = "X[" + (i + 1) + "] = " + this.solutions[i];
         }
@@ -28,8 +29,8 @@ class SolutionSet {
     }
 }
 
-
 public class LinearSystem {
+
     public NumMatrix coeffMatrix = null;
     public NumVector addtionalVector = null;
     public int size;

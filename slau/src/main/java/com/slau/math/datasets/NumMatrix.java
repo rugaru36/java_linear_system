@@ -6,6 +6,7 @@ import com.slau.shared.input.FloatInputHandler;
 import com.slau.shared.input.IInputHandler;
 
 public class NumMatrix implements Cloneable {
+
     private final IInputHandler<Float> fInput = new FloatInputHandler();
 
     private int rowsNum;
@@ -14,7 +15,6 @@ public class NumMatrix implements Cloneable {
     private Float determinant = null;
 
     // constructors
-
     public NumMatrix(int size) {
         try {
             this.rowsNum = size;
@@ -90,7 +90,6 @@ public class NumMatrix implements Cloneable {
     }
 
     // private methods
-
     private void calculateDet() {
         if (this.rowsNum != this.colsNum) {
             this.determinant = null;
@@ -124,8 +123,9 @@ public class NumMatrix implements Cloneable {
             for (int rowCounter = 0; rowCounter < size; rowCounter++) {
                 int minorCurrColNum = 0;
                 Float[] minorRow = new Float[minorSize];
-                if (rowCounter == elRow)
+                if (rowCounter == elRow) {
                     continue;
+                }
                 for (int colCounter = 0; colCounter < size; colCounter++) {
                     if (colCounter == elCol) {
                         continue;
