@@ -11,11 +11,9 @@ public class Main {
         try {
             LinearSystem lSystem = new LinearSystem(3);
 
-            SolutionThread cramerT = new SolutionThread(
-                    lSystem,
+            SolutionThread cramerT = new SolutionThread(lSystem, 
                     new CramerAlgorithm());
-            SolutionThread jordanGaussT = new SolutionThread(
-                    lSystem,
+            SolutionThread jordanGaussT = new SolutionThread(lSystem,
                     new JordanGaussAlgorithm());
             SolutionThread[] threads = new SolutionThread[]{
                 cramerT,
