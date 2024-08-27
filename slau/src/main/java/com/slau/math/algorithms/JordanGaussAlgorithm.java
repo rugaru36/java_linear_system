@@ -5,6 +5,7 @@ import com.slau.math.datasets.NumMatrix;
 import com.slau.math.datasets.NumVector;
 
 public class JordanGaussAlgorithm implements ISolutionAlgorithm {
+
     private LinearSystem lSystem;
     private NumMatrix matrixToMakeUnit;
     private NumVector solutionsVector;
