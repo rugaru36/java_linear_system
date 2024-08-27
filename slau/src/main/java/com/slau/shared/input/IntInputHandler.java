@@ -5,15 +5,18 @@
 package com.slau.shared.input;
 
 import java.util.Scanner;
+import java.util.function.Predicate;
 
 /**
  *
  * @author anton
  */
+
 public class IntInputHandler implements IInputHandler<Integer> {
-
+    
+    private Predicate<Integer> predicate;
     private final Scanner inScanner = new Scanner(System.in);
-
+    
     @Override
     public Integer getSingle(String preparedString, String message) throws Exception {
         if (message == null) {
@@ -26,8 +29,13 @@ public class IntInputHandler implements IInputHandler<Integer> {
                 strToParse = this.inScanner.next();
             }
             try {
-                return Integer.valueOf(strToParse);
+                Integer value = Integer.valueOf(strToParse);
+                if (predicate != null && !predicate.test(value)) {
+                    throw new NumberFormatException("number doesn`t satisfy provided predicate");
+                }
+                return value;
             } catch (NumberFormatException e) {
+                strToParse = null;
                 System.err.println(e.getMessage());
                 if (preparedString != null) {
                     break;
@@ -39,13 +47,17 @@ public class IntInputHandler implements IInputHandler<Integer> {
 
     @Override
     public Integer[] getArray(int size, String preparedStr, String message) throws Exception {
-        // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
     public Integer[][] getTwoDArray(int rows, int cols) throws Exception {
-        // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
         throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public IntInputHandler setPredicate(Predicate<Integer> predicate) {
+        this.predicate = predicate;
+        return this;
     }
 }

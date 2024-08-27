@@ -1,8 +1,11 @@
 package com.slau.shared.input;
 
 import java.util.Scanner;
+import java.util.function.Predicate;
 
-public class FloatInputHandler implements  IInputHandler<Float> {
+public class FloatInputHandler implements IInputHandler<Float> {
+
+    private Predicate<Float> predicate = null;
     private final Scanner inScanner = new Scanner(System.in);
 
     // ввод числа или парсинг готовой строки
@@ -18,7 +21,11 @@ public class FloatInputHandler implements  IInputHandler<Float> {
                 strToParse = this.inScanner.next();
             }
             try {
-                return Float.valueOf(strToParse);
+                Float val = Float.valueOf(strToParse);
+                if (predicate != null && !predicate.test(val)) {
+                    throw new NumberFormatException("number doesn`t satisfy provided predicate");
+                }
+                return val;
             } catch (NumberFormatException e) {
                 System.err.println(e.getMessage());
                 if (preparedStr != null) {
@@ -83,5 +90,11 @@ public class FloatInputHandler implements  IInputHandler<Float> {
         if (size <= 0) {
             throw new Exception(sizeName + " cant be less than zero!");
         }
+    }
+
+    @Override
+    public FloatInputHandler setPredicate(Predicate<Float> predicate) {
+        this.predicate = predicate;
+        return this;
     }
 }
