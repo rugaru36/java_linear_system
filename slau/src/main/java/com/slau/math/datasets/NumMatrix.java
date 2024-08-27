@@ -5,7 +5,7 @@ import java.util.Objects;
 import com.slau.shared.input.FloatInputHandler;
 import com.slau.shared.input.IInputHandler;
 
-public class NumMatrix {
+public class NumMatrix implements Cloneable {
     private final IInputHandler<Float> fInput = new FloatInputHandler();
 
     private int rowsNum;
@@ -72,14 +72,17 @@ public class NumMatrix {
         return this.determinant;
     }
 
-    public NumMatrix getClonedMatrix() {
-        Float[][] newMatrixElements = new Float[this.rowsNum][this.colsNum];
-        for (int i = 0; i < this.rowsNum; i++) {
-            for (int j = 0; j < this.colsNum; j++) {
-                newMatrixElements[i] = this.matrixElements[i].clone();
+    @Override
+    public NumMatrix clone() throws CloneNotSupportedException {
+        try {
+            NumMatrix newMatrix = (NumMatrix) super.clone();
+            for (int i = 0; i < this.rowsNum; i++) {
+                newMatrix.matrixElements[i] = this.matrixElements[i].clone();
             }
+            return newMatrix;
+        } catch (CloneNotSupportedException e) {
+            return null;
         }
-        return new NumMatrix(newMatrixElements);
     }
 
     public void set(int row, int col, float val) {

@@ -3,7 +3,7 @@ package com.slau.math.datasets;
 import com.slau.shared.input.FloatInputHandler;
 import com.slau.shared.input.IInputHandler;
 
-public class NumVector {
+public class NumVector implements Cloneable {
     /**
      * vector elements
      */
@@ -44,12 +44,10 @@ public class NumVector {
         return this.elements;
     }
 
-    public NumVector getClonedVector() {
-        Float[] newElements = new Float[this.size];
-        for (int i = 0; i < this.size; i++) {
-            float newRawVal = this.get(i);
-            newElements[i] = newRawVal;
-        }
-        return new NumVector(newElements);
+    @Override
+    public NumVector clone() throws CloneNotSupportedException {
+        NumVector vector = (NumVector) super.clone();
+        vector.elements = this.elements.clone();
+        return vector;
     }
 }
