@@ -15,17 +15,20 @@ class SolutionSet {
     }
 
     public void print() {
-        if (this.solutions == null) {
-            System.err.println("No solutions provided");
-        }
-        int solutionsCount = this.solutions.length;
+        boolean isThereSolutions = this.solutions != null;
+        String allSolutionsStr = null;
         String nameStr = "Algorithm name: " + this.name;
-        String[] singleSolutionStr = new String[this.solutions.length];
-        for (int i = 0; i < solutionsCount; i++) {
-            singleSolutionStr[i] = "X[" + (i + 1) + "] = " + this.solutions[i];
+        if (isThereSolutions) {
+            int solutionsCount = this.solutions.length;
+            String[] singleSolutionStr = new String[this.solutions.length];
+            for (int i = 0; i < solutionsCount; i++) {
+                singleSolutionStr[i] = "X[" + (i + 1) + "] = " + this.solutions[i];
+            }
+            allSolutionsStr = String.join(", ", singleSolutionStr);
+        } else {
+            allSolutionsStr = "No solutions";
         }
-        String allSolutionsPresentation = String.join(", ", singleSolutionStr);
-        System.out.println(nameStr + ": " + allSolutionsPresentation);
+        System.out.println(nameStr + ": " + allSolutionsStr);
     }
 }
 

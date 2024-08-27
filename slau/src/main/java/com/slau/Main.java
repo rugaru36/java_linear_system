@@ -4,12 +4,16 @@ import com.slau.math.SolutionThread;
 import com.slau.math.algorithms.CramerAlgorithm;
 import com.slau.math.algorithms.JordanGaussAlgorithm;
 import com.slau.math.datasets.LinearSystem;
+import com.slau.shared.input.IntInputHandler;
 
 public class Main {
 
     public static void main(String[] args) {
         try {
-            LinearSystem lSystem = new LinearSystem(3);
+            String sizeMsg = "Input system size";
+            int size = new IntInputHandler().getSingle(null, sizeMsg);
+            
+            LinearSystem lSystem = new LinearSystem(size);
 
             SolutionThread cramerT = new SolutionThread(lSystem, 
                     new CramerAlgorithm());
