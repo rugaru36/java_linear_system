@@ -12,11 +12,6 @@ public class SolutionThread extends Thread {
     public SolutionThread(LinearSystem lSystem, ISolutionAlgorithm algorithm) {
         this.lSystem = lSystem;
         this.algorithm = algorithm;
-        try {
-            this.clone();
-        } catch (CloneNotSupportedException ex) {
-            Logger.getLogger(SolutionThread.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }
     
     @Override
