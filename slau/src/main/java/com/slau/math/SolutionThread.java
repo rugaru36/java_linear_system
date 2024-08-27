@@ -10,6 +10,7 @@ public class SolutionThread extends Thread {
     public SolutionThread(LinearSystem lSystem, ISolutionAlgorithm algorithm) {
         this.lSystem = lSystem;
         this.algorithm = algorithm;
+        this.setName(algorithm.getName() + "_thread");
     }
     
     @Override
