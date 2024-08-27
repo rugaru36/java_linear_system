@@ -12,8 +12,12 @@ public class JordanGaussAlgorithm implements ISolutionAlgorithm {
     @Override
     public void setSystem(LinearSystem system) {
         this.lSystem = system;
-        this.matrixToMakeUnit = system.coeffMatrix.getClonedMatrix();
-        this.solutionsVector = system.addtionalVector.getClonedVector();
+        try {
+            this.matrixToMakeUnit = system.coeffMatrix.clone();
+            this.solutionsVector = system.addtionalVector.clone();
+        } catch (CloneNotSupportedException ex) {
+            System.err.println(ex.getMessage());
+        }
     }
 
     @Override
