@@ -94,17 +94,17 @@ public class JordanGaussAlgorithm implements ISolutionAlgorithm {
         /*
          * привели к ступенчатому виду, переходим к единичному (чистим всё, что над диагональю)
          */
-//        for (int reverseDiagI = this.lSystem.size - 1; reverseDiagI > 0; reverseDiagI--) {
-//            for (int rowOverDiag = reverseDiagI - 1; rowOverDiag >= 0; rowOverDiag--) {
-//                float matrixOldValOverDiag = this.matrixToMakeUnit.get(rowOverDiag, reverseDiagI);
-//                this.matrixToMakeUnit.set(rowOverDiag, reverseDiagI, 0);
-//
-//                float vectorDiagVal = this.solutionsVector.get(reverseDiagI);
-//                float oldVectorOverDiagVal = this.solutionsVector.get(rowOverDiag);
-//                float valToSubstractInVector = vectorDiagVal * matrixOldValOverDiag;
-//                this.solutionsVector.set(rowOverDiag,
-//                        oldVectorOverDiagVal - valToSubstractInVector);
-//            }
-//        }
+        for (int reverseDiagI = this.lSystem.size - 1; reverseDiagI > 0; reverseDiagI--) {
+            for (int rowOverDiag = reverseDiagI - 1; rowOverDiag >= 0; rowOverDiag--) {
+                float matrixOldValOverDiag = this.matrixToMakeUnit.get(rowOverDiag, reverseDiagI);
+                this.matrixToMakeUnit.set(rowOverDiag, reverseDiagI, 0);
+
+                float vectorDiagVal = this.solutionsVector.get(reverseDiagI);
+                float oldVectorOverDiagVal = this.solutionsVector.get(rowOverDiag);
+                float valToSubstractInVector = vectorDiagVal * matrixOldValOverDiag;
+                this.solutionsVector.set(rowOverDiag,
+                        oldVectorOverDiagVal - valToSubstractInVector);
+            }
+        }
     }
 }
