@@ -76,7 +76,7 @@ public class JordanGaussAlgorithm implements ISolutionAlgorithm {
         for (int reverseDiagI = this.lSystem.size - 1; reverseDiagI > 0; reverseDiagI--) {
             for (int rowOverDiag = reverseDiagI - 1; rowOverDiag >= 0; rowOverDiag--) {
                 float rowCoeff = this.matrixToMakeUnit.get(rowOverDiag, reverseDiagI);
-                this.addSystemRows(reverseDiagI, rowOverDiag, rowCoeff);
+                this.addSystemRows(reverseDiagI, rowOverDiag, -rowCoeff);
             }
         }
     }
@@ -93,8 +93,8 @@ public class JordanGaussAlgorithm implements ISolutionAlgorithm {
         float oldVectorValue = this.solutionsVector.get(row);
         this.solutionsVector.set(row, oldVectorValue * coeff);
         for (int col = 0; col < this.lSystem.size; col++) {
-            float oldValue = this.matrixToMakeUnit.get(row, col);
-            this.matrixToMakeUnit.set(row, col, oldValue * coeff);
+            float oldMatrixValue = this.matrixToMakeUnit.get(row, col);
+            this.matrixToMakeUnit.set(row, col, oldMatrixValue * coeff);
         }
     }
 }

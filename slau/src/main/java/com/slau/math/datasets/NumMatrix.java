@@ -84,7 +84,7 @@ public class NumMatrix implements Cloneable {
         for (int col = 0; col < this.colsNum; col++) {
             float srcValue = this.matrixElements[srcRow][col];
             float oldTargetValue = this.matrixElements[targetRow][col];
-            this.set(col, targetRow, oldTargetValue + (srcValue * coeff));
+            this.set(targetRow, col, oldTargetValue + (srcValue * coeff));
         }
     }
 
