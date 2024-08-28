@@ -11,7 +11,7 @@ public class NumVector implements Cloneable {
     private Float[] elements;
     private int size;
 
-    private final IInputHandler<Float> fInput = new FloatInputHandler();
+    private final IInputHandler<Float> floatInput = new FloatInputHandler();
 
     public NumVector(Float[] elements) {
         this.elements = elements;
@@ -20,7 +20,7 @@ public class NumVector implements Cloneable {
 
     public NumVector(int size) {
         try {
-            this.elements = this.fInput.getList(size, null, null).toArray(new Float[size]);
+            this.elements = this.floatInput.getList(size, null, null).toArray(new Float[size]);
             this.size = size;
         } catch (Exception e) {
             System.err.println(e.getMessage());
@@ -52,7 +52,7 @@ public class NumVector implements Cloneable {
         }
         return new NumVector(newVectorElements);
     }
-    
+
     public void addElements(int srcIndex, int targetIndex, float coeff) {
         float targetValue = this.get(targetIndex);
         float srcValue = this.get(srcIndex);

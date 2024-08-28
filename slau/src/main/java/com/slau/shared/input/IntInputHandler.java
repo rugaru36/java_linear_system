@@ -8,7 +8,7 @@ package com.slau.shared.input;
  *
  * @author anton
  */
-public class IntInputHandler extends InputHandler<Integer> implements IInputHandler<Integer> {
+public class IntInputHandler extends InputHandler<Integer> {
 
     public IntInputHandler() {
         this.stringInputParseFunc = (String val) -> Integer.valueOf(val);

@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class NumMatrix implements Cloneable {
 
-    private final IInputHandler<Float> fInput = new FloatInputHandler();
+    private final IInputHandler<Float> floatInput = new FloatInputHandler();
 
     private int rowsNum;
     private int colsNum;
@@ -21,7 +21,7 @@ public class NumMatrix implements Cloneable {
             this.rowsNum = rows;
             this.colsNum = cols;
             this.matrixElements = new Float[rows][cols];
-            var listOfLists = this.fInput.getListOfLists(rows, cols);
+            var listOfLists = this.floatInput.getListOfLists(rows, cols);
             for (int i = 0; i < listOfLists.size(); i++) {
                 var list = listOfLists.get(i);
                 this.matrixElements[i] = list.toArray(new Float[list.size()]);
