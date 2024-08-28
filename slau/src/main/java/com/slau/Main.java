@@ -15,7 +15,7 @@ public class Main {
             Predicate<Integer> validSystemSizePredicate = x -> x > 1;
             String sizeMsg = "Input system size";
             int size = new IntInputHandler()
-//                    .setPredicate(validSystemSizePredicate)
+                    .setPredicate(validSystemSizePredicate)
                     .getSingle(null, sizeMsg);
 
             // creating solution threads
