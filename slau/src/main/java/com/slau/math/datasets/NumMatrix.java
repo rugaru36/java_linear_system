@@ -37,7 +37,6 @@ public class NumMatrix implements Cloneable {
         this.matrixElements = matrixElements;
     }
 
-    // equals override
     public boolean equals(NumMatrix m) {
         if (m == null || this.colsNum != m.colsNum || this.rowsNum != m.rowsNum) {
             return false;
@@ -69,20 +68,24 @@ public class NumMatrix implements Cloneable {
     }
 
     @Override
-    public NumMatrix clone() throws CloneNotSupportedException {
-        try {
-            NumMatrix newMatrix = (NumMatrix) super.clone();
-            for (int i = 0; i < this.rowsNum; i++) {
-                newMatrix.matrixElements[i] = this.matrixElements[i].clone();
-            }
-            return newMatrix;
-        } catch (CloneNotSupportedException e) {
-            return null;
+    public NumMatrix clone() {
+        Float[][] newMatrixElements = new Float[rowsNum][colsNum];
+        for (int i = 0; i < this.rowsNum; i++) {
+            newMatrixElements[i] = this.matrixElements[i].clone();
         }
+        return new NumMatrix(newMatrixElements);
     }
 
     public void set(int row, int col, float val) {
         this.matrixElements[row][col] = val;
+    }
+
+    public void addRows(int srcRow, int targetRow, float coeff) {
+        for (int col = 0; col < this.colsNum; col++) {
+            float srcValue = this.matrixElements[srcRow][col];
+            float oldTargetValue = this.matrixElements[targetRow][col];
+            this.set(col, targetRow, oldTargetValue + (srcValue * coeff));
+        }
     }
 
     // private methods

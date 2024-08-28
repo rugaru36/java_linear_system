@@ -46,8 +46,16 @@ public class NumVector implements Cloneable {
 
     @Override
     public NumVector clone() throws CloneNotSupportedException {
-        NumVector vector = (NumVector) super.clone();
-        vector.elements = this.elements.clone();
-        return vector;
+        Float[] newVectorElements = new Float[size];
+        for (int i = 0; i < size; i++) {
+            newVectorElements[i] = this.elements[i];
+        }
+        return new NumVector(newVectorElements);
+    }
+    
+    public void addElements(int srcIndex, int targetIndex, float coeff) {
+        float targetValue = this.get(targetIndex);
+        float srcValue = this.get(srcIndex);
+        this.set(targetIndex, targetValue + (srcValue * coeff));
     }
 }
