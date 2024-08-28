@@ -36,7 +36,7 @@ public abstract class InputHandler<InputType> implements IInputHandler<InputType
             try {
                 InputType val = stringInputParseFunc.apply(strToParse);
                 if (predicate != null && !predicate.test(val)) {
-                    throw new Exception("number doesn`t satisfy provided predicate");
+                    throw new Exception("input doesn`t satisfy provided predicate");
                 }
                 return val;
             } catch (Exception e) {
