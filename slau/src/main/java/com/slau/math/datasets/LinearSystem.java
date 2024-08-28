@@ -40,7 +40,7 @@ public class LinearSystem {
     private final ArrayList<SolutionSet> solutionSets = new ArrayList<>();
 
     public LinearSystem(int systemSize) {
-        this.coeffMatrix = new NumMatrix(systemSize);
+        this.coeffMatrix = new NumMatrix(systemSize, systemSize);
         this.addtionalVector = new NumVector(systemSize);
         this.size = systemSize;
     }

@@ -47,7 +47,7 @@ public class JordanGaussAlgorithm implements ISolutionAlgorithm {
         for (int i = 0; i < lSystem.size; i++) {
             boolean isZero = true;
             for (int j = 0; j < this.lSystem.size; j++) {
-                if (this.lSystem.coeffMatrix.get(i, j) != 0) {
+                if (this.matrixToMakeUnit.get(i, j) != 0) {
                     isZero = false;
                     break;
                 }

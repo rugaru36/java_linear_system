@@ -4,6 +4,7 @@ import java.util.Objects;
 
 import com.slau.shared.input.FloatInputHandler;
 import com.slau.shared.input.IInputHandler;
+import java.util.ArrayList;
 
 public class NumMatrix implements Cloneable {
 
@@ -15,21 +16,16 @@ public class NumMatrix implements Cloneable {
     private Float determinant = null;
 
     // constructors
-    public NumMatrix(int size) {
-        try {
-            this.rowsNum = size;
-            this.colsNum = size;
-            this.matrixElements = this.fInput.getTwoDArray(size, size);
-        } catch (Exception e) {
-            System.err.println(e.getMessage());
-        }
-    }
-
     public NumMatrix(int rows, int cols) {
         try {
             this.rowsNum = rows;
             this.colsNum = cols;
-            this.matrixElements = this.fInput.getTwoDArray(rows, cols);
+            this.matrixElements = new Float[rows][cols];
+            var listOfLists = this.fInput.getListOfLists(rows, cols);
+            for (int i = 0; i < listOfLists.size(); i++) {
+                var list = listOfLists.get(i);
+                this.matrixElements[i] = list.toArray(new Float[list.size()]);
+            }
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }
@@ -141,6 +137,5 @@ public class NumMatrix implements Cloneable {
             System.err.println(e.getMessage());
             return null;
         }
-
     }
 }

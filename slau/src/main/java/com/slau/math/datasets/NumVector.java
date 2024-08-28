@@ -20,7 +20,7 @@ public class NumVector implements Cloneable {
 
     public NumVector(int size) {
         try {
-            this.elements = this.fInput.getArray(size, null, null);
+            this.elements = this.fInput.getList(size, null, null).toArray(new Float[size]);
             this.size = size;
         } catch (Exception e) {
             System.err.println(e.getMessage());
