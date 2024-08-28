@@ -20,7 +20,7 @@ public abstract class InputHandler<InputType> implements IInputHandler<InputType
     private final Scanner inScanner = new Scanner(System.in);
     // from constructor
     protected Function<String, InputType> stringInputParseFunc;
-    protected String typeName;
+    protected String typeName = "default";
 
     @Override
     public InputType getSingle(String preparedString, String message) throws Exception {
